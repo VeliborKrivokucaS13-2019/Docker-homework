@@ -1,0 +1,22 @@
+import json
+import http.client
+
+connection = http.client.HTTPConnection("localhost:5000")
+objectPayload = json.dumps(
+  {'ime': 'Velibor',
+  'prezime': 'Krivokuca',
+  'username': 'velibor',
+  'smer': 'IT',
+  'predmeti':
+    [{'ime': 'Organizacija racunara', 'espb': 8},
+     {'ime': 'PARIOS', 'espb': 6}
+    ]}
+)
+headers = {
+  'Content-Type': 'application/json'
+}
+
+connection.request("POST", "/users", objectPayload, headers)
+response = connection.getresponse()
+dataDisplay = response.read()
+print(dataDisplay.decode("utf-8"))

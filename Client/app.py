@@ -1,8 +1,8 @@
 import json
 import http.client
 
-connection = http.client.HTTPConnection("localhost:5000")
-objectPayload = json.dumps(
+conn = http.client.HTTPConnection("localhost:5000")
+seed = json.dumps(
   {'ime': 'Velibor',
   'prezime': 'Krivokuca',
   'username': 'velibor',
@@ -15,8 +15,7 @@ objectPayload = json.dumps(
 headers = {
   'Content-Type': 'application/json'
 }
-
-connection.request("POST", "/users", objectPayload, headers)
-response = connection.getresponse()
-dataDisplay = response.read()
-print(dataDisplay.decode("utf-8"))
+conn.request("POST", "/users", seed, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))

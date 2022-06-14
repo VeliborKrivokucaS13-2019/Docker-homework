@@ -8,5 +8,5 @@ spec:
     spec:
       containers:
         - name: client
-          image: client:testclient
+          image: client:0.1
       restartPolicy: Never

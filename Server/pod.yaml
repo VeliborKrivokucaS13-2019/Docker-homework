@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
     - name: server
-      image: server:testserver
+      image: server:0.1
       ports:
         - containerPort: 8081
